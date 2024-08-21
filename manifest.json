@@ -25,6 +25,6 @@
       "webRequest",
       "webRequestBlocking"
    ],
-   "version": "0.5.2",
+   "version": "0.1.0",
    "web_accessible_resources": [ "chance.min.js" ]
 }
