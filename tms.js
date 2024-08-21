@@ -14,9 +14,10 @@ chrome.storage.local.get({
 
   let filterPass = 0;
 
-  console.log("[adrum-injector] URL filter is: " + a.urlFilter);
+  let urlRegex = new RegExp(".*" + a.urlFilter + ".*", "ig");
+  console.log("[adrum-injector] URL RegEx filter is: " + urlRegex);
   console.log("[adrum-injector] Current URL is: " + document.location.href);
-  if (document.location.href.indexOf(a.urlFilter) > -1) {
+  if (document.location.href.match(urlRegex)) {
     filterPass = 1;
   } else {
     console.log(`[adrum-injector] Injection switch OFF, filter did NOT match '${document.location.href}' does not contain '${a.urlFilter}'`)

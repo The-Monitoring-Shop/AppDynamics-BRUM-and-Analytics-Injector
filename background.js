@@ -1,7 +1,7 @@
 /*
 "content_scripts": [ {
    "all_frames": true,
-   "js": [ "chance.min.js", "appdynamics1.js" ],
+   "js": [ "chance.min.js", "tms.js" ],
    "run_at": "document_start"
 } ],
 */
@@ -32,7 +32,7 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo) {
                         runAt: 'document_start',
                     }, () => {
                         chrome.tabs.executeScript(tabId, {
-                            file: 'appdynamics1.js',
+                            file: 'tms.js',
                             allFrames: true,
                             runAt: 'document_start',
                         }, () => {

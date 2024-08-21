@@ -14,7 +14,7 @@
       "128": "icon.png"
    },
    "manifest_version": 2,
-   "name": "AppDynamics RUM and Analytics Injector Beta",
+   "name": "The Monitoring Shop's AppDynamics RUM and Analytics Injector",
    "options_page": "options.html",
    "permissions": [
       "activeTab",
