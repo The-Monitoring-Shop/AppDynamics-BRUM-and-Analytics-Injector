@@ -1,12 +1,31 @@
+// chrome.storage.local.clear();
+
+chrome.storage.local.set({
+    "agentLocation": "https://cdn.appdynamics.com/adrum/adrum-24.4.0.4454.js",
+    "adrumAppKey": "EUM-AAB-AUA",
+    "urlFilter": "(clalbit\.co\.il|appdynamics\.com)",
+    "agentConfigJS": 
+`
+window['adrum-start-time'] = new Date().getTime();
+(function(config){
+    config.appKey = 'EUM-AAB-AUA';
+    config.adrumExtUrlHttp = "http://cdn.appdynamics.com";
+    config.adrumExtUrlHttps = "https://cdn.appdynamics.com";
+    config.beaconUrlHttp = "http://appd.themonitoringshop.com:7001";
+    config.beaconUrlHttps = "https://appd.themonitoringshop.com:7002";
+    config.resTiming = {"bufSize":200,"clearResTimingOnBeaconSend":true};
+    config.maxUrlLength = 512;
+    config.xd = { enable: false };
+    config.spa = { "spa2": true };
+    config.isZonePromise = true;
+})(window["adrum-config"] || (window["adrum-config"] = {}));
+`
+})
+
 chrome.storage.local.get({
-  "injectionSwitch": 0,
-  "autoRefreshValue": -1,
-  "agentLocation": "https://cdn.appdynamics.com/adrum/adrum-latest.js",
-  "beaconLocationHttp": "https://col.eum-appdynamics.com",
-  "beaconLocationHttps": "https://col.eum-appdynamics.com",
+  "agentLocation": "",
   "adrumAppKey": "",
   "urlFilter": "",
-  "pageName": "",
   "agentConfigJS": ""
 }, function(a) {
 
@@ -20,11 +39,11 @@ chrome.storage.local.get({
   if (document.location.href.match(urlRegex)) {
     filterPass = 1;
   } else {
-    console.log(`[adrum-injector] Injection switch OFF, filter did NOT match '${document.location.href}' does not contain '${a.urlFilter}'`)
+    console.log(`[adrum-injector] Injection switch OFF, filter did NOT match '${document.location.href}' does not match regex '${a.urlFilter}'`)
   }
 
-  if (1 == a.injectionSwitch && filterPass == 1) {
-    console.log(`[adrum-injector] Injection switch ON, filter did match '${document.location.href}' contains '${a.urlFilter}'`)
+  if (filterPass == 1) {
+      console.log(`[adrum-injector] Injection switch ON, filter did match '${document.location.href}' matches regex '${a.urlFilter}'`)
     if (a.agentConfigJS != "") {
       let e = document.createElement("script");
       e.setAttribute("type", "text/javascript");
@@ -34,37 +53,9 @@ chrome.storage.local.get({
 
     if (a.adrumAppKey != "") {
       console.log("[adrum-injector] ADRUM App Key is set: " + a.adrumAppKey);
-      let d = document.createElement("script");
-      d.setAttribute("type", "text/javascript");
-      //d.innerHTML = 'window["adrum-app-key"] = "' + a.adrumAppKey + '";';
-      let blh = 'http://col.eum-appdynamics.com'
-      let blhs = 'https://col.eum-appdynamics.com'
-      if(a.adrumAppKey.startsWith('EC')) {
-        blh = 'http://fra-col.eum-appdynamics.com'
-        blhs = 'https://fra-col.eum-appdynamics.com'
-      } else if (a.adrumAppKey.startsWith('SM')) {
-        blh = 'http://syd-col.eum-appdynamics.com'
-        blhs = 'https://syd-col.eum-appdynamics.com'
-      }
-      d.innerHTML =
-`
-window["adrum-start-time"] = new Date().getTime();
-window["adrum-app-key"] = "${a.adrumAppKey}";
-(function(config){
-  if(typeof config.beaconUrlHttps === 'undefined') {
-    config.beaconUrlHttps = '${blhs}';
-    console.log('[adrum-injector] Auto Configured Beacon Location HTTPS', config.beaconUrlHttps)
-  }
-  if(typeof config.beaconUrlHttp === 'undefined') {
-    config.beaconUrlHttp = '${blh}';
-    console.log('[adrum-injector] Auto Configured Beacon Location HTTP', config.beaconUrlHttps)
-  }
-})(window["adrum-config"] || (window["adrum-config"] = {}))
-`
-      document.head.appendChild(d);
     }
 
-    console.debug("[adrum-injector] Window URL is: " + window.location.href.split("?")[0]);
+    console.log("[adrum-injector] Window URL is: " + window.location.href.split("?")[0]);
 
     let c = document.createElement("script");
     c.setAttribute("type", "text/javascript");
@@ -75,27 +66,6 @@ window["adrum-app-key"] = "${a.adrumAppKey}";
 
     document.head.appendChild(c);
 
-    let chanceScript = document.createElement("script");
-    chanceScript.src = chrome.extension.getURL("chance.min.js");
-    document.head.appendChild(chanceScript);
-
-    if (typeof a.autoRefreshValue === 'number' & a.autoRefreshValue > 0) {
-      console.log("[adrum-injector] Refresh Beacon Count is: " + a.autoRefreshValue);
-      let d = document.createElement("script");
-      d.setAttribute("type", "text/javascript");
-      d.innerHTML = `setInterval(() => { if(ADRUM && ADRUM.beacons && ADRUM.beacons.numBeaconsSent >= ${a.autoRefreshValue}) { window.location.reload(); }  }, 2000)`
-      document.head.appendChild(d);
-    }
-
     filterPass = 0;
   }
 });
-
-chrome.runtime.onMessage.addListener(
-  function(request) {
-    if (request.message == "resetSession") {
-      console.log("[adrum-injector] Resetting session...");
-      localStorage.removeItem("ADRUM_AGENT_INFO");
-    }
-  }
-);
