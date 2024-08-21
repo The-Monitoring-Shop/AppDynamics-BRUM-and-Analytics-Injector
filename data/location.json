@@ -1,0 +1,107 @@
+[
+    {
+        "value": "3.5.140.1",
+        "label": "Seoul, South Korea.",
+        "category": "Asia Pacific"
+    }, 
+    {
+        "value": "13.248.56.1",
+        "label": "Hong Kong, China.",
+        "category": "Asia Pacific"
+    }, 
+    {
+        "value": "13.248.117.1",
+        "label": "Mumbai, India.",
+        "category": "Asia Pacific"
+    }, 
+    {
+        "value": "52.95.182.1",
+        "label": "Osaka, Japan.",
+        "category": "Asia Pacific"
+    }, 
+    {
+        "value": "150.222.3.187",
+        "label": "Singapore.",
+        "category": "Asia Pacific"
+    }, 
+    {
+        "value": "54.206.0.1",
+        "label": "Sydney, Australia.",
+        "category": "Asia Pacific"
+    }, 
+    {
+        "value": "52.144.225.65",
+        "label": "Tokyo, Japan.",
+        "category": "Asia Pacific"
+    }, 
+    {
+        "value": "15.230.39.109",
+        "label": "Ohio, US.",
+        "category": "North America"
+    }, 
+    {
+        "value": "15.230.137.1",
+        "label": "N. Virginia, US.",
+        "category": "North America"
+    }, 
+    {
+        "value": "52.93.178.220",
+        "label": "California, US.",
+        "category": "North America"
+    }, 
+    {
+        "value": "52.93.240.187",
+        "label": "Oregon, US.",
+        "category": "North America"
+    }, 
+    {
+        "value": "52.144.199.129",
+        "label": "Quebec, Canada.",
+        "category": "North America"
+    }, 
+    {
+        "value": "3.5.136.1",
+        "label": "Frankfurt, Germany.",
+        "category": "Europe"
+    }, 
+    {
+        "value": "52.144.210.1",
+        "label": "Dublin, Ireland.",
+        "category": "Europe"
+    }, 
+    {
+        "value": "52.144.211.197",
+        "label": "London, UK.",
+        "category": "Europe"
+    }, 
+    {
+        "value": "52.93.133.178",
+        "label": "Milan, Italy.",
+        "category": "Europe"
+    }, 
+    {
+        "value": "13.36.0.1",
+        "label": "Paris, France.",
+        "category": "Europe"
+    }, 
+    {
+        "value": "52.144.216.3",
+        "label": "Stockholm, Sweden.",
+        "category": "Europe"
+    }, 
+    {
+        "value": "18.230.0.1",
+        "label": "Sao Paulo, Brazil.",
+        "category": "South America"
+    }, 
+    {
+        "value": "99.82.128.1",
+        "label": "Bahrain.",
+        "category": "Middle East"
+    }, 
+    {
+        "value": "3.5.228.1",
+        "label": "Cape Town, South Africa.",
+        "category": "Africa"
+    }
+]

@@ -1,0 +1,115 @@
+@font-face {
+    font-family: ProductSans;
+    src: url(product-sans/product-sans-regular.ttf);
+}
+
+body{
+	width: 500px;
+}
+
+* {
+	font-family: ProductSans;
+}
+
+input[type="text"]{
+	font-family: ProductSans;
+	width: 90%;
+}
+
+textarea {
+    width: 400px;
+}
+
+h1{
+	font-size: 1.3em;
+}
+
+h2{
+	font-size: 1.2em;
+}
+
+h3{
+	font-size: 1.1em;
+}
+
+table{
+	width: 100%;
+}
+
+.emp{
+	font-weight: bold;
+	text-decoration: underline;
+
+}
+
+.key{
+	width: 20%;
+}
+
+.value{
+	width: 80%;
+}
+
+.headertitle{
+	font-size: 1.5em;
+	display: inline;
+
+}
+
+.headertitleaccent{
+	color: #26b098;
+}
+
+.note{
+	font-size: 0.5em;
+}
+
+.warning{
+	color: red;
+	display: none;
+}
+
+.confirmation{
+	display: none;
+}
+
+.centre {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.headerimage{
+	height: 50%;
+	width: 50%;
+}
+
+.ui-autocomplete-category {
+  font-weight: bold;
+  padding: .2em .4em;
+  margin: .8em 0 .2em;
+
+}
+
+.ui-autocomplete {
+    max-height: 200px;
+    width: 75%;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+.ui-tooltip {
+	color: #f1f1f1;
+	background: #48AE4E;
+	font-size: 0.5em;
+	box-shadow: 0 0 7px black;
+	border: 0px;
+}
+
+.ui-button{
+	width: auto;
+}
+
+#grantAllPermissions, #permissionsHint {
+  display: none;
+}

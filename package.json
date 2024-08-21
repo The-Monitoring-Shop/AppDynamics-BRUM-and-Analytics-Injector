@@ -1,0 +1,7 @@
+{
+  "name": "adruminjector",
+  "description": "AppDynamics RUM and Analytics Injector Beta",
+  "devDependencies": {
+    "eslint": "^7.15.0"
+  }
+}

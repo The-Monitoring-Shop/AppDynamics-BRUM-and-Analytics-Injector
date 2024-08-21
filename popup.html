@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>AppDynamics RUM and Analytics Injector</title>
+    <link rel="stylesheet" href="jquery/jquery-ui.css">
+    <link rel="stylesheet" href="popup.css">
+    <link rel="stylesheet" href="waitoverlay/jquery.wait-overlay.css">
+    <script src="jquery/external/jquery/jquery.js"></script>
+    <script src="jquery/jquery-ui.js"></script>
+    <script src="popup.js"></script>
+    <script src="chance.min.js"></script>
+</head>
+
+<body>
+    <br />
+
+    <span class="headertitle">// AppDynamics <span class="headertitleaccent">RUM and Analytics Injector</span></span>
+
+    <br />
+    <br />
+
+    <button id="toggle" name="toggle" class="button"><span id="status"></span></button>
+    &nbsp;
+    <button id="openOptionsPage" name="openOptionsPage" class="button">General Options</button>
+    &nbsp;
+    <button id="grantAllPermissions" name="grantAllPermissions" class="button">Grant Host Permissions<sup>(*)</sup></button>
+    <br />
+    <br />
+    <div id="permissionsHint" style="color: red">(*) Grant permissions to this extension to access all websites and work immediatly when you open a new tab.</div>
+
+    <p>
+        Please click on "General Options" to configure the AppDynamics Browser Real User Monitoring (ADRUM) agent
+        and to configure URL filters.
+    </p>
+
+	<div id="accordion" style="display: none">
+    <h3>// User Data</h3>
+    <div class="tab">
+        Apply on URLs that equals<br /><input name="url" id="url" type="text" />
+
+        <p>Wrap the below <span class="emp">values</span> in double quotes (") if you wish to pass a string otherwise it will evaluate as JavaScript.</p>
+
+        Custom Page Name<br /><input name="pageName" id="pageName" type="text" />
+        <br />
+
+        <p>You can use Chance.js to randomise the values. For example, entering 'chance.age()' will generate a random age every time. For more information, go to <a href="http://chancejs.com/" target="_blank">http://chancejs.com/</a></p>
+
+        <input id="testBox" name="testBox" type="text" disabled="disabled" value="Your test results will appear here..." />
+
+        <table id="userDataConfigTable">
+            <thead>
+            <tr>
+                <th>Key</th>
+                <th>Type</th>
+                <th>Value</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+        <br />
+        <button id="insertRowButton" name="insertRowButton" class="button">Insert New User Data</button>
+        <br />
+        <br />
+        <button id="saveUserData" name="saveUserData" class="button">Save</button>
+        <span id="userDataConfirm" class="confirmation"></span>
+    </div>
+    </div>
+</body>
+</html>
