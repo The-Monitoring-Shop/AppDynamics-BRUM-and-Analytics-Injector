@@ -1,6 +1,6 @@
 
 // Here we can set the regex pattern to use for URL matching
-const urlRegexPattern = "(clalbit\.co\.il|appdynamics\.com|bbc\.co\.uk)";
+const urlRegexPattern = "(clalcredit\.co\.il|clalbit\.co\.il|appdynamics\.com|bbc\.co\.uk)";
 
 
 
