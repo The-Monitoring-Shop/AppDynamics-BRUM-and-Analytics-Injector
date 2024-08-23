@@ -1,24 +1,45 @@
 {
-"update_url": "https://clients2.google.com/service/update2/crx",
-
-   "background": {
-      "scripts": [ "background.js" ]
-   },
-   "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
-   "description": "",
+   "manifest_version": 3,
+   "name": "The Monitoring Shop's AppDynamics RUM and Analytics Injector",
+   "version": "0.1.0",
+   "permissions": [
+      "activeTab",
+      "tabs",
+      "scripting"
+   ],
    "icons": {
       "128": "icon.png"
    },
-   "manifest_version": 2,
-   "name": "The Monitoring Shop's AppDynamics RUM and Analytics Injector",
-   "permissions": [
-      "activeTab",
-      "storage"
+   "host_permissions": [
+      "*://*/*",
+      "<all_urls>"
    ],
-   "optional_permissions": [
-      "<all_urls>",
-      "webRequest",
-      "webRequestBlocking"
+   // "background": {
+   //    "service_worker": "tms_background.js",
+   //    "type": "module"
+   // },
+   "content_scripts": [
+      {
+         "matches": [
+            "<all_urls>"
+         ],
+         "js": [
+            "tms_adrum_content.js"
+         ],
+         "run_at": "document_start",
+         "all_frames": true
+      }
    ],
-   "version": "0.1.0"
+   "web_accessible_resources": [
+      {
+         "resources": [
+            "tms_adrum_content.js",
+            "adrum_config.js",
+            "adrum.js"
+         ],
+         "matches": [
+            "<all_urls>"
+         ]
+      }
+   ]
 }
