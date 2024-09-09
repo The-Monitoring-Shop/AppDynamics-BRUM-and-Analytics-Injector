@@ -34,7 +34,7 @@
       {
          "resources": [
             "tms_adrum_content.js",
-            "adrum_config.js",
+            "/adrum_configs/*.js",
             "adrum.js"
          ],
          "matches": [
