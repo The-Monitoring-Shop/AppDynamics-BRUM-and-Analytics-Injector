@@ -1,10 +1,11 @@
 
-// Here we can set the regex pattern to use for URL matching
-// const urlRegexPattern = "(clalcredit\.co\.il|clalbit\.co\.il|appdynamics\.com|bbc\.co\.uk)";
+//////////////////////////////////////////// 
+// Config
+//////////////////////////////////////////// 
 
 const domainArray = [
-    // name - filename to inject
-    // url - regex pattern
+    // name - filename to inject (case insensitive)
+    // url - regex pattern (case insensitive)
     // regexExact - whether exact regex match or contains
 
     {
@@ -14,19 +15,35 @@ const domainArray = [
     },
 
     {
-        name: "BBC",
+        name: "bbc",
         url: "bbc\\.co\\.uk",
         regexExact: false
     },
 
 ]
 
+//////////////////////////////////////////// 
+// Config - choose which way we want to inject
+//////////////////////////////////////////// 
 
+// Use this line to inject as early as possible
+adrumInject(); 
+
+// Use this line to inject inside head
+// document.addEventListener("DOMContentLoaded", adrumInject);
+
+
+
+//////////////////////////////////////////// 
+// Functional code below this point
+// DO NOT CHANGE
+//////////////////////////////////////////// 
 
 // Function to inject script into page
 function injectScript (src) {
     const script = document.createElement("script");
     script.type = "text/javascript";
+    script.async = false;
     script.src = chrome.runtime.getURL(src);
     (document.head||document.documentElement).appendChild(script);
 }
@@ -62,19 +79,19 @@ function checkDomain (currentDomain) {
     return currentDomainMatch;
 }
 
+function adrumInject() {
+    // Lets see if we have a match
+    console.log(`[adrum-injector] Current domain: ${document.location.href}`);
+    domainMatch = checkDomain(document.location.href);
 
-
-// Lets see if we have a match
-console.log(`[adrum-injector] Current domain: ${document.location.href}`);
-domainMatch = checkDomain(document.location.href);
-
-// Do we have a match between page url and regex pattern?
-if (domainMatch.name !== undefined) {
-    console.log(`[adrum-injector] Injection Enabled, Matching: '${domainMatch.name}' URL: '${document.location.href}' Regex: '${urlRegex}'`);
-    console.log("[adrum-injector] Injecting ...");
-    injectScript(`./adrum_configs/${domainMatch.name}.js`);
-    injectScript('adrum.js');
-    console.log("[adrum-injector] Window URL: " + window.location.href.split("?")[0]);
-} else {
-    console.log(`[adrum-injector] Injection Disabled, Matching: '${domainMatch.name}' URL: '${document.location.href}' Regex: '${urlRegex}'`);
+    // Do we have a match between page url and regex pattern?
+    if (domainMatch.name !== undefined) {
+        console.log(`[adrum-injector] Injection Enabled, Matching: '${domainMatch.name}' URL: '${document.location.href}' Regex: '${urlRegex}'`);
+        console.log("[adrum-injector] Injecting ...");
+        injectScript(`/adrum_configs/${domainMatch.name}.js`);
+        injectScript('adrum.js');
+        console.log("[adrum-injector] Window URL: " + window.location.href.split("?")[0]);
+    } else {
+        console.log(`[adrum-injector] Injection Disabled, Matching: '${domainMatch.name}' URL: '${document.location.href}' Regex: '${urlRegex}'`);
+    }
 }
