@@ -27,10 +27,10 @@ const domainArray = [
 //////////////////////////////////////////// 
 
 // Use this line to inject as early as possible
-adrumInject(); 
+// adrumInject(); 
 
 // Use this line to inject inside head
-// document.addEventListener("DOMContentLoaded", adrumInject);
+document.addEventListener("DOMContentLoaded", adrumInject);
 
 
 
