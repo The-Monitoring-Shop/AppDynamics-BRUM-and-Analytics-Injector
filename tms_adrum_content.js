@@ -6,18 +6,15 @@
 const domainArray = [
     // name - filename to inject (case insensitive)
     // url - regex pattern (case insensitive)
-    // regexExact - whether exact regex match or contains
 
     {
         name: "appdynamics",
-        url: "www\\.appdynamics\\.com",
-        regexExact: true
+        url: "^http[s]?:\/\/www\\.appdynamics\\.com"
     },
 
     {
         name: "bbc",
-        url: "bbc\\.co\\.uk",
-        regexExact: false
+        url: "bbc\\.co\\.uk"
     },
 
 ]
@@ -57,14 +54,7 @@ function checkDomain (currentDomain) {
     domainArray.some((domainArrayElement) => {
         // console.log(`[adrum-injector] domainArrayElement - name: ${domainArrayElement.name} | url: ${domainArrayElement.url} | regexExact: ${domainArrayElement.regexExact}`);
 
-        // Are we matching exact domain pattern
-        if (domainArrayElement.regexExact == true) {
-            // console.log("Match should be exact!");
-            urlRegex = RegExp(`^http[s]?:\/\/${domainArrayElement.url}`, "ig");            
-        } else {
-            // console.log("Match should not be exact!");
-            urlRegex = RegExp(`${domainArrayElement.url}`, "ig");
-        }
+        urlRegex = RegExp(`${domainArrayElement.url}`, "ig");            
         // console.log(`[adrum-injector] urlRegEx: ${urlRegex}`);
 
         // Does regex match
