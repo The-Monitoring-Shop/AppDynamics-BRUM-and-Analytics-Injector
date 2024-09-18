@@ -9,7 +9,7 @@ const domainArray = [
     // regexExact - whether exact regex match or contains
 
     {
-        name: "Appdynamics",
+        name: "appdynamics",
         url: "www\\.appdynamics\\.com",
         regexExact: true
     },
