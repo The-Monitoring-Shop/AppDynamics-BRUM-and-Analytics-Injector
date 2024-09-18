@@ -14,10 +14,6 @@
       "*://*/*",
       "<all_urls>"
    ],
-   // "background": {
-   //    "service_worker": "tms_background.js",
-   //    "type": "module"
-   // },
    "content_scripts": [
       {
          "matches": [
@@ -41,5 +37,6 @@
             "<all_urls>"
          ]
       }
-   ]
+   ],
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAmA34D45bcoY5mM1zoHYwU8VJdhje0Xz1uU43PzlWwZ9H4TX/345Fu39n2mvTbC4Y2VvnthZWJ01o1zUTl5rCfoHMsE0OI9Q7Y6WSB8SkuTfSGuAa4bZE+mbycBucH+wJf+vYzdAuIV6ayYeqg4jJ+0HTzqNeVgnYpT+L506Lfl+7eI+wME1KyxYYX3KLC2GoyQ2dZOi9KrRO3aWrUKPSYinbicR5ZgnENIAQ8NjokJbrb+txNbJAYIQPBQiDRTSc2VTlREaUlWUmKhH7VLKSETOdD/A5Q7yTwVKRsUneubeyuYGMljTGueYhqCl9LT7ckK6cxm8IW6AjiYPtseNjsQIDAQAB"
 }
