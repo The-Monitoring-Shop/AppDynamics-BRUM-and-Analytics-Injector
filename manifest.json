@@ -3,9 +3,7 @@
    "name": "The Monitoring Shop's AppDynamics RUM and Analytics Injector",
    "version": "0.1.0",
    "permissions": [
-      "activeTab",
-      "tabs",
-      "scripting"
+      "activeTab"
    ],
    "icons": {
       "128": "icon.png"
